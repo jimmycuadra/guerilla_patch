@@ -11,11 +11,7 @@ describe GuerillaPatch do
       end
     end
 
-    if RUBY_VERSION < "2"
-      it "permanently modifies the object" do
-        expect(2.minutes).to eql(120)
-      end
-    else
+    if Object.respond_to?(:refine, true)
       it "does not permanently modify the object" do
         expect { 2.minutes }.to raise_error(NoMethodError)
       end
@@ -30,6 +26,10 @@ describe GuerillaPatch do
         end
 
         expect(c.new.test_refinement).to eql(120)
+      end
+    else
+      it "permanently modifies the object" do
+        expect(2.minutes).to eql(120)
       end
     end
   end

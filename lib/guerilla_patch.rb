@@ -3,10 +3,10 @@ require "guerilla_patch/version"
 module GuerillaPatch
   class << self
     def patch(obj, name, &block)
-      if RUBY_VERSION < "2"
-        obj.class_exec(&block)
-      else
+      if Object.respond_to?(:refine, true)
         refine_obj(obj, name, &block)
+      else
+        obj.class_exec(&block)
       end
 
       obj
