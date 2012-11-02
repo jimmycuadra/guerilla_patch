@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jimmycuadra/guerilla_patch.png)](https://travis-ci.org/jimmycuadra/guerilla_patch)
+
 # GuerillaPatch
 
 **GuerillaPatch** is a Ruby gem to ease the transition to Ruby 2.0 when redefining behavior in existing objects (monkey patching). Ruby 2.0 introduces a new feature called *refinements* which allows you to create monkey patches that only exist in a scope where the refinement is explicitly included, preventing your changes from affected code that has not opted in.
